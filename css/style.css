@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.imgContainer{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+#imgPizza, #imgPizza2{
+    height: 400px;
+    width: 200px;
+    -webkit-filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.2));
+    filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.2));
+    margin: 3px;
+}
+
+.buttons__container{
+    display: flex;
+    justify-content: center;
+}
+
+.buttons__item{
+    padding: 15px;
+    margin: 10px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+}
