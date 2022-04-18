@@ -19,7 +19,7 @@
 
 .buttons__container{
     display: flex;
-    justify-content: center;
+    justify-content: center
 }
 
 .buttons__item{
@@ -29,4 +29,20 @@
     border: 2px solid black;
     border-radius: 25px;
     cursor: pointer;
+}
+
+@media (max-width: 576px){
+
+    #imgPizza, #imgPizza2{
+        height: 300px;
+        width: 150px;
+    }
+
+    .buttons__item{
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 15px;
+        margin: 15px 0;
+    }
 }

@@ -9,15 +9,22 @@
     <title>Simulador interactivo - JavaScript</title>
 </head>
 <body>
+    <main class="container">
     <div class="imgContainer">
     <img id="imgPizza">
     <img id="imgPizza2">
     </div>
 
-    <div class="buttons__container">
-        <button type="button" onclick="randomImg()" class="buttons__item">¡Pizza aleatoria!</button>
-        <button type="button" onclick="confirmPizza()" class="buttons__item">Confirmar pedido</button>
+    <div class="buttons__container container">
+        <div class="row">
+            <div class="">
+                <button type="button" onclick="randomImg()" class="buttons__item btn text-nowrap rounded-pill">¡Pizza aleatoria!</button>
+                <button type="button" onclick="confirmPizza()" class="buttons__item btn text-nowrap rounded-pill">Confirmar pedido</button>
+            </div>
+        </div>
     </div>
+</main>
+
     <script src="./js/main.js"></script>
 </body>
 </html>
