@@ -31,6 +31,10 @@
     cursor: pointer;
 }
 
+.buttons__item:hover{
+    background-color: rgb(247, 247, 247);
+}
+
 @media (max-width: 576px){
 
     #imgPizza, #imgPizza2{
