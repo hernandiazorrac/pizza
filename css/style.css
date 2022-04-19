@@ -35,6 +35,13 @@
     background-color: rgb(247, 247, 247);
 }
 
+.refreshButton{
+    display: none;
+}
+
+
+
+
 @media (max-width: 576px){
 
     #imgPizza, #imgPizza2{
