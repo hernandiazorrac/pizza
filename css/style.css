@@ -46,8 +46,7 @@
     .buttons__item{
         display: flex;
         justify-content: center;
-        margin: 0 auto;
         padding: 15px;
-        margin: 15px 0;
+        margin: 15px auto;
     }
 }
