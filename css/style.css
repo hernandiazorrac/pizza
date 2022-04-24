@@ -36,6 +36,12 @@
 }
 
 
+.cardsContainer{
+    display: flex;
+    padding: 70px 0;
+    margin: 0 auto;
+}
+
 @media (max-width: 576px){
 
     #imgPizza, #imgPizza2{
