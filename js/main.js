@@ -3,15 +3,14 @@ let pizzaArrayR = ['champ2.png', 'pepperoni2.png', 'napolitana2.png', 'margherit
 
 // ------------------------------------------------------------ //
 
-const pizzasVariedad = [{nombre: "Napolitana", descripcion: "Salsa, parmesano, albahaca.", precio: 900, img: "../assets/img/napolitana200.png"}, {nombre: "Margarita", precio: 700, img: "../assets/img/margherita200.png"}, {nombre: "Cebolla", precio: 800, img: "../assets/img/onion200.png"}, {nombre: "Salchicha", precio: 700, img: "../assets/img/sausage200.png"}, {nombre: "Champignones", precio: 700, img: "../assets/img/champ200.png"}, {nombre: "Pepperoni", precio: 700, img: "../assets/img/pepperoni200.png"}]
+// const pizzasVariedad = [{nombre: "Napolitana", descripcion: "Salsa, parmesano, albahaca.", precio: 900, img: "../assets/img/napolitana200.png"}, {nombre: "Margarita", precio: 700, img: "../assets/img/margherita200.png"}, {nombre: "Cebolla", precio: 800, img: "../assets/img/onion200.png"}, {nombre: "Salchicha", precio: 700, img: "../assets/img/sausage200.png"}, {nombre: "Champignones", precio: 700, img: "../assets/img/champ200.png"}, {nombre: "Pepperoni", precio: 700, img: "../assets/img/pepperoni200.png"}]
 
 // ------------------------------------------------------------ //
-let culo = ["concha", "cajeta"]
 let cart = []
 
 // ------------------------------------------------------------ //
 
-alert("\n¿No te decidís qué pizza pedir? \nNosotros nos encargamos de eso.")
+//alert("\n¿No te decidís qué pizza pedir? \nNosotros nos encargamos de eso.")
 
 // for(let pizzas of pizzasVariedad){
 //     pizzaCard.innerHTML += `<div class="card text-center p-3" style="width: 18rem;">
