@@ -10,80 +10,9 @@
     <title>Simulador interactivo - JavaScript</title>
 </head>
 <body>
+<main class="container">
 
-    <main class="container">
-   
-    <!-- <div id="pizzaCard"></div> Cards con pizzas -->
-    <!-- <div class="cardsContainer text-center">
-    <div class="row">
-        <div class="col-6 col-md-4 col-lg-4">
-    <div class="card" style="width: 18rem;">
-        <img src="./assets/img/napolitana.png" class="card-img-top p-3" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Napolitana</h5>
-          <p class="card-text">$900</p>
-          <a href="#" class="btn btn-warning">Agregar al carrito</a>
-        </div>
-        </div>
-      </div>
-
-      <div class="col-6 col-md-4 col-lg-4">
-      <div class="card" style="width: 18rem;">
-        <img src="./assets/img/margherita.png" class="card-img-top p-3" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Margarita</h5>
-          <p class="card-text">$700</p>
-          <a href="#" class="btn btn-warning">Agregar al carrito</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-6 col-md-4 col-lg-4">
-      <div class="card" style="width: 18rem;">
-        <img src="./assets/img/onion.png" class="card-img-top p-3" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Cebolla</h5>
-          <p class="card-text">$800</p>
-          <a href="#" class="btn btn-warning">Agregar al carrito</a>
-        </div>
-      </div>
-    </div>
-
-      <div class="col-6 col-md-4 col-lg-4">
-      <div class="card" style="width: 18rem;">
-        <img src="./assets/img/sausage.png" class="card-img-top p-3" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Salchicha</h5>
-          <p class="card-text">$800</p>
-          <a href="#" class="btn btn-warning">Agregar al carrito</a>
-        </div>
-      </div>
-    </div>
-
-      <div class="col-6 col-md-4 col-lg-4">
-      <div class="card" style="width: 18rem;">
-        <img src="./assets/img/champ.png" class="card-img-top p-3" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Champignones</h5>
-          <p class="card-text">$900</p>
-          <a href="#" class="btn btn-warning">Agregar al carrito</a>
-        </div>
-      </div>
-    </div>
-
-      <div class="col-6 col-md-4 col-lg-4">
-      <div class="card" style="width: 18rem;">
-        <img src="./assets/img/pepperoni.png" class="card-img-top p-3" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Pepperoni</h5>
-          <p class="card-text">$700</p>
-          <a href="#" class="btn btn-warning">Agregar al carrito</a>
-        </div>
-      </div>
-    </div>
-</div>
-</div> -->
-<div class="cardsContainer row col-7 col-sm-9 col-md-10 col-lg-12">
+  <div class="cardsContainer row col-7 col-sm-9 col-md-10 col-lg-12">
 <div class="card mb-3 mx-auto" style="max-width: 540px;">
     <div class="row g-0">
       <div class="col-md-4 p-3">
@@ -92,7 +21,7 @@
       <div class="col-md-8">
         <div class="card-body mt-3">
           <h5 class="card-title">Pepperoni</h5>
-          <p class="card-text text-muted mt-3">Salsa, muzzarella, rodajas de pepperoni</p>
+          <p class="card-text text-muted mt-3">Salsa, muzzarella, rodajas de pepperoni — $800</p>
           <button class="btn col-12 btn-warning mt-2" onclick="addToCart(`${pizzasVariedad[0].nombre + ' - ' + '$' + pizzasVariedad[0].precio}`)">Agregar</button>
         </div>
       </div>
@@ -107,7 +36,7 @@
       <div class="col-md-8">
         <div class="card-body mt-3">
           <h5 class="card-title">Margarita</h5>
-          <p class="card-text text-muted mt-3">Salsa, muzzarella, albahaca.</p>
+          <p class="card-text text-muted mt-3">Salsa, muzzarella, albahaca. — $700</p>
           <button class="btn col-12 btn-warning mt-2" onclick="addToCart(`${pizzasVariedad[1].nombre + ' - ' + '$' + pizzasVariedad[1].precio}`)">Agregar</button>
         </div>
       </div>
@@ -122,7 +51,7 @@
       <div class="col-md-8">
         <div class="card-body mt-3">
           <h5 class="card-title">Napolitana</h5>
-          <p class="card-text text-muted">Salsa, queso parmesano, olivas negras, albahaca.</p>
+          <p class="card-text text-muted">Salsa, queso parmesano, olivas negras, albahaca. — $900</p>
           <button class="btn col-12 btn-warning" onclick="addToCart(`${pizzasVariedad[2].nombre + ' - ' + '$' + pizzasVariedad[2].precio}`)">Agregar</button>
         </div>
       </div>
@@ -137,7 +66,7 @@
       <div class="col-md-8">
         <div class="card-body mt-3">
           <h5 class="card-title">Champignones</h5>
-          <p class="card-text text-muted">Salsa, muzzarella, champignones, tomate, olivas negras.</p>
+          <p class="card-text text-muted">Salsa, muzzarella, champignones, tomate, olivas negras. — $900</p>
           <button class="btn col-12 btn-warning" onclick="addToCart(`${pizzasVariedad[3].nombre + ' - ' + '$' + pizzasVariedad[3].precio}`)">Agregar</button>
         </div>
       </div>
@@ -152,8 +81,8 @@
       <div class="col-md-8">
         <div class="card-body mt-3">
           <h5 class="card-title">Cebolla</h5>
-          <p class="card-text text-muted mt-3">Muzzarella, cebolla morada, olivas negras.</p>
-          <button class="btn col-12 btn-warning mt-3" onclick="addToCart(`${pizzasVariedad[4].nombre + ' - ' + '$' + pizzasVariedad[4].precio}`)">Agregar</button>
+          <p class="card-text text-muted mt-2">Muzzarella, cebolla morada, olivas negras. — $700</p>
+          <button class="btn col-12 btn-warning" onclick="addToCart(`${pizzasVariedad[4].nombre + ' - ' + '$' + pizzasVariedad[4].precio}`)">Agregar</button>
         </div>
       </div>
     </div>
@@ -167,7 +96,7 @@
       <div class="col-md-8">
         <div class="card-body mt-3">
           <h5 class="card-title">Salchichas</h5>
-          <p class="card-text text-muted">Salsa, muzzarella, champignones, salchichas, olivas negras.</p>
+          <p class="card-text text-muted">Salsa, muzzarella, champignones, salchichas, olivas negras. — $800</p>
           <button class="btn col-12 btn-warning" onclick="addToCart(`${pizzasVariedad[5].nombre + ' - ' + '$' + pizzasVariedad[5].precio}`)">Agregar</button>
         </div>
       </div>

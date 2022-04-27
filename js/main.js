@@ -3,7 +3,7 @@ let pizzaArrayR = ['champ2.png', 'pepperoni2.png', 'napolitana2.png', 'margherit
 
 // ------------------------------------------------------------ //
 
-const pizzasVariedad = [{nombre: "Pepperoni", precio: 700, img: "../assets/img/pepperoni200.png"}, {nombre: "Margarita", precio: 700, img: "../assets/img/margherita200.png"}, {nombre: "Napolitana", descripcion: "Salsa, parmesano, albahaca.", precio: 900, img: "../assets/img/napolitana200.png"}, {nombre: "Champignones", precio: 700, img: "../assets/img/champ200.png"}, {nombre: "Cebolla", precio: 800, img: "../assets/img/onion200.png"}, {nombre: "Salchichas", precio: 700, img: "../assets/img/sausage200.png"}, ]
+const pizzasVariedad = [{nombre: "Pepperoni", precio: 800, img: "../assets/img/pepperoni200.png"}, {nombre: "Margarita", precio: 700, img: "../assets/img/margherita200.png"}, {nombre: "Napolitana", descripcion: "Salsa, parmesano, albahaca.", precio: 900, img: "../assets/img/napolitana200.png"}, {nombre: "Champignones", precio: 900, img: "../assets/img/champ200.png"}, {nombre: "Cebolla", precio: 700, img: "../assets/img/onion200.png"}, {nombre: "Salchichas", precio: 800, img: "../assets/img/sausage200.png"}, ]
 
 // ------------------------------------------------------------ //
 let cart = []
