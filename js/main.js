@@ -3,7 +3,7 @@ let pizzaArrayR = ['champ2.png', 'pepperoni2.png', 'napolitana2.png', 'margherit
 
 // ------------------------------------------------------------ //
 
-const pizzasVariedad = [{nombre: "Pepperoni", precio: 800, img: "../assets/img/pepperoni200.png"}, {nombre: "Margarita", precio: 700, img: "../assets/img/margherita200.png"}, {nombre: "Napolitana", descripcion: "Salsa, parmesano, albahaca.", precio: 900, img: "../assets/img/napolitana200.png"}, {nombre: "Champignones", precio: 900, img: "../assets/img/champ200.png"}, {nombre: "Cebolla", precio: 700, img: "../assets/img/onion200.png"}, {nombre: "Salchichas", precio: 800, img: "../assets/img/sausage200.png"}, ]
+const pizzasVariedad = [{nombre: "Pepperoni", precio: 800, cantidad: 1, img: "../assets/img/pepperoni200.png"}, {nombre: "Margarita", precio: 700, cantidad: 1, img: "../assets/img/margherita200.png"}, {nombre: "Napolitana", descripcion: "Salsa, parmesano, albahaca.", precio: 900, cantidad: 1, img: "../assets/img/napolitana200.png"}, {nombre: "Champignones", precio: 900, cantidad: 1, img: "../assets/img/champ200.png"}, {nombre: "Cebolla", precio: 700, cantidad: 1, img: "../assets/img/onion200.png"}, {nombre: "Salchichas", precio: 800, cantidad: 1, img: "../assets/img/sausage200.png"}]
 
 // ------------------------------------------------------------ //
 let cart = []
@@ -27,16 +27,34 @@ function randomImg(){
 
 //pop up de confirmar pedido
 function confirmPizza(){
-    let confirmar = confirm("\n¿Querés confirmar tu pedido?")
+    let confirmar = confirm("\n¿Querés confirmar tu pedido?");
         if(confirmar){
-            console.log("¡Muchas gracias por tu compra!")
-            alert("¡Muchas gracias por tu compra!")
+            console.log("¡Muchas gracias por tu compra!");
+            alert("¡Muchas gracias por tu compra!");
         }else{
         }
 }
 
 //agregar al carrito
-function addToCart(item){
+
+let Items = function(nombre, precio, cantidad){
+    this.nombre = nombre;
+    this.precio = parseInt(precio);
+    this.cantidad = parseInt(cantidad);
+}
+
+function addToCart(nombre, precio, cantidad){
+    //si existe el item, incrementar cantidad
+    for (let i in cart){
+        if (cart[i].nombre === nombre){
+            cart[i].cantidad += 1;
+            console.table(cart);
+            return;
+        }
+    }
+
+    //si no existe el item, agregarlo
+    let item = new Items (nombre, precio, cantidad);
     cart.push(item);
     console.table(cart);
 }
