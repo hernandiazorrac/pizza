@@ -54,6 +54,7 @@ function addToCart(nombre, precio, cantidad){
         if (cart[i].nombre === nombre){
             cart[i].cantidad += 1;
             console.table(cart);
+            console.log("El total es: $" + totalCart())
             return;
         }
     }
@@ -62,6 +63,7 @@ function addToCart(nombre, precio, cantidad){
     let item = new Items (nombre, precio, cantidad);
     cart.push(item);
     console.table(cart);
+    console.log("El total es: $" + totalCart())
 }
 
 // ------------------------------------------------------------ //
@@ -77,6 +79,7 @@ function removeFromCart(nombre){
                 cart.splice(i, 1);
             }
             console.table(cart);
+            console.log("El total es: $" + totalCart())
             return;
         }
     }
@@ -91,6 +94,7 @@ function removeAllFromCart(nombre){
         if(cart[i].nombre === nombre){
             cart.splice(i, 1);
             console.table(cart);
+            console.log("El total es: $" + totalCart())
             return;
         }
     }
@@ -100,7 +104,20 @@ function removeAllFromCart(nombre){
 
 //vaciar el carrito
 
-function clearCart(){
-    cart = [];
-    console.table(cart)
+// function clearCart(){
+//     cart = [];
+//     console.table(cart)
+// }
+
+// ------------------------------------------------------------ //
+
+//calcular total del carrito
+
+function totalCart(){
+    let totalPrice = 0;
+    for(let i in cart){
+        totalPrice += cart[i].precio * cart[i].cantidad;
+    }
+    return totalPrice;
 }
+
