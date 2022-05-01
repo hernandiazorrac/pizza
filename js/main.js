@@ -6,7 +6,7 @@ let pizzaArrayR = ['champ2.png', 'pepperoni2.png', 'napolitana2.png', 'margherit
 const pizzasVariedad = [{nombre: "Pepperoni", precio: 800, cantidad: 1, img: "../assets/img/pepperoni200.png"}, {nombre: "Margarita", precio: 700, cantidad: 1, img: "../assets/img/margherita200.png"}, {nombre: "Napolitana", descripcion: "Salsa, parmesano, albahaca.", precio: 900, cantidad: 1, img: "../assets/img/napolitana200.png"}, {nombre: "Champignones", precio: 900, cantidad: 1, img: "../assets/img/champ200.png"}, {nombre: "Cebolla", precio: 700, cantidad: 1, img: "../assets/img/onion200.png"}, {nombre: "Salchichas", precio: 800, cantidad: 1, img: "../assets/img/sausage200.png"}]
 
 // ------------------------------------------------------------ //
-let cart = []
+
 // ------------------------------------------------------------ //
 
 randomImg();
@@ -20,7 +20,7 @@ function randomImg(){
     let selectImg = pizzaArrayL[randomArray]
     let selectImg2 = pizzaArrayR[randomArray2]
 
-    //dirección de donde se obtienen las imágenes
+    //ruta de donde se obtienen las imágenes
     document.getElementById('imgPizza').src = `./assets/img/${selectImg}`; 
     document.getElementById('imgPizza2').src = `./assets/img/${selectImg2}`;
 }
@@ -35,12 +35,17 @@ function confirmPizza(){
         }
 }
 
-//agregar al carrito
+// ------------------------------------------------------------ //
 
-let Items = function(nombre, precio, cantidad){
-    this.nombre = nombre;
-    this.precio = parseInt(precio);
-    this.cantidad = parseInt(cantidad);
+let cart = []
+
+//agregar al carrito
+class Items {
+    constructor(nombre, precio, cantidad) {
+        this.nombre = nombre;
+        this.precio = parseInt(precio);
+        this.cantidad = parseInt(cantidad);
+    }
 }
 
 function addToCart(nombre, precio, cantidad){
@@ -57,4 +62,45 @@ function addToCart(nombre, precio, cantidad){
     let item = new Items (nombre, precio, cantidad);
     cart.push(item);
     console.table(cart);
+}
+
+// ------------------------------------------------------------ //
+
+//eliminar del carrito de a uno
+
+function removeFromCart(nombre){
+    for(let i in cart){
+        if(cart[i].nombre === nombre){
+            cart[i].cantidad -= 1;
+
+            if(cart[i].cantidad === 0){
+                cart.splice(i, 1);
+            }
+            console.table(cart);
+            return;
+        }
+    }
+}
+
+// ------------------------------------------------------------ //
+
+//eliminar del carrito
+
+function removeAllFromCart(nombre){
+    for(let i in cart){
+        if(cart[i].nombre === nombre){
+            cart.splice(i, 1);
+            console.table(cart);
+            return;
+        }
+    }
+}
+
+// ------------------------------------------------------------ //
+
+//vaciar el carrito
+
+function clearCart(){
+    cart = [];
+    console.table(cart)
 }
