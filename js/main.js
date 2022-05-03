@@ -121,3 +121,12 @@ function totalCart(){
     return totalPrice;
 }
 
+// ------------------------------------------------------------ //
+
+function countDisplay(){
+    let cant = 0;
+    for(let i in cart){
+        cant += cart[i].cantidad
+    }
+    document.getElementById('countDisplay').innerHTML = cant;
+}
