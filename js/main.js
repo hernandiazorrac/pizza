@@ -7,8 +7,6 @@ const pizzasVariedad = [{nombre: "Pepperoni", precio: 800, cantidad: 1, img: "..
 
 // ------------------------------------------------------------ //
 
-// ------------------------------------------------------------ //
-
 randomImg();
 
 //genera imagen aleatoria
@@ -120,13 +118,14 @@ function totalCart(){
     }
     return totalPrice;
 }
-
 // ------------------------------------------------------------ //
+
+// muestra la cantidad del mismo item
 
 function countDisplay(){
     let cant = 0;
     for(let i in cart){
         cant += cart[i].cantidad
     }
-    document.getElementById('countDisplay').innerHTML = cant;
+    document.getElementById('countDisplay').innerHTML = cant;   
 }
