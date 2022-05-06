@@ -5,7 +5,7 @@ let pizzaArrayR = ['champ2.png', 'pepperoni2.png', 'napolitana2.png', 'margherit
 
 const pizzasVariedad = [{nombre: "Pepperoni", precio: 800, cantidad: 1, img: "../assets/img/pepperoni200.png"}, {nombre: "Margarita", precio: 700, cantidad: 1, img: "../assets/img/margherita200.png"}, {nombre: "Napolitana", descripcion: "Salsa, parmesano, albahaca.", precio: 900, cantidad: 1, img: "../assets/img/napolitana200.png"}, {nombre: "Champignones", precio: 900, cantidad: 1, img: "../assets/img/champ200.png"}, {nombre: "Cebolla", precio: 700, cantidad: 1, img: "../assets/img/onion200.png"}, {nombre: "Salchichas", precio: 800, cantidad: 1, img: "../assets/img/sausage200.png"}]
 
-// ------------------------------------------------------------ //
+// --------------------------   pizza aleatoria    -------------------------------- //
 
 randomImg();
 
@@ -24,16 +24,19 @@ function randomImg(){
 }
 
 //pop up de confirmar pedido
-function confirmPizza(){
+
+const btnConfirm = document.querySelector(".confirmPizza")
+
+btnConfirm.addEventListener("click", () => {
     let confirmar = confirm("\n¿Querés confirmar tu pedido?");
         if(confirmar){
             console.log("¡Muchas gracias por tu compra!");
             alert("¡Muchas gracias por tu compra!");
         }else{
         }
-}
+})
 
-// ------------------------------------------------------------ //
+// ----------------------   carrito    ------------------------------- //
 
 let cart = []
 
@@ -127,5 +130,6 @@ function countDisplay(){
     for(let i in cart){
         cant += cart[i].cantidad
     }
-    document.getElementById('countDisplay').innerHTML = cant;   
+    document.querySelector('#countDisplay').innerHTML = cant;       
 }
+
