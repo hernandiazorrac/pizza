@@ -3,11 +3,31 @@
     padding: 0;
 }
 
-.imgContainer{
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+.cardsContainer{
+    margin: 0 0;
 }
+
+.textoLogo{
+    margin: 7% 10%;
+}
+
+.logoImg{
+    transition: transform 0.3s ease-in-out;
+}
+
+.logoImg:hover{
+    transform: rotate(30deg);
+}
+
+.countDisplayContainer{
+    display: inline-block;
+    padding: 2% 5%;    
+    color: rgba(0, 0, 0, 0.384);
+    border-radius: 5px;
+    background-color:rgba(211, 211, 211, 0.253);
+}
+
+
 
 #imgPizza, #imgPizza2{
     height: 400px;
@@ -15,6 +35,12 @@
     -webkit-filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.2));
     filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.2));
     margin: 3px;
+}
+
+.imgContainer{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
 
 .buttons__container{
@@ -36,12 +62,12 @@
 }
 
 
-.cardsContainer{
+/* .cardsContainer{
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
     padding: 70px 0;
-}
+} */
 
 @media (max-width: 576px){
 
