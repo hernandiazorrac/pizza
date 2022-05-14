@@ -7,7 +7,7 @@ const containerPizzas = document.querySelector(".pizzasContainer")
 
 // ------------------------------------------------------------ //
 
-const pizzasVariedad = [{id: 1, nombre: "Pepperoni", descripcion: "Salsa, muzzarella, rodajas de pepperoni.", precio: 800, cantidad: 1, img: "../assets/img/pepperoni200.png"}, {id: 2, nombre: "Margarita", descripcion: "Salsa, muzzarella, albahaca.", precio: 700, cantidad: 1, img: "../assets/img/margherita200.png"}, {id: 3, nombre: "Napolitana", descripcion: "Salsa, parmesano, albahaca.", precio: 900, cantidad: 1, img: "../assets/img/napolitana200.png"}, {id: 4, nombre: "Champignones", descripcion: "Salsa, muzzarella, champignones, tomate, olivas negras.", precio: 900, cantidad: 1, img: "../assets/img/champ200.png"}, {id: 5, nombre: "Cebolla", descripcion: "Muzzarella, cebolla morada, olivas negras.", precio: 700, cantidad: 1, img: "../assets/img/onion200.png"}, {id: 6, nombre: "Salchichas", descripcion: "Salsa, muzzarella, champignones, salchichas, olivas negras.", precio: 800, cantidad: 1, img: "../assets/img/sausage200.png"}]
+const pizzasVariedad = [{id: 1, nombre: "Pepperoni", descripcion: "Salsa, muzzarella, rodajas de pepperoni.", precio: 800, cantidad: 1, img: "https://res.cloudinary.com/digb4d0uf/image/upload/v1652139887/JS%20CoderHouse/pepperoni200_gpvvj6.webp"}, {id: 2, nombre: "Margarita", descripcion: "Salsa, muzzarella, albahaca.", precio: 700, cantidad: 1, img: "https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/margherita200_unlsey.webp"}, {id: 3, nombre: "Napolitana", descripcion: "Salsa, parmesano, albahaca.", precio: 900, cantidad: 1, img: "https://res.cloudinary.com/digb4d0uf/image/upload/v1652139889/JS%20CoderHouse/napolitana200_gyc07e.webp"}, {id: 4, nombre: "Champignones", descripcion: "Salsa, muzzarella, champignones, tomate, olivas negras.", precio: 900, cantidad: 1, img: "https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/champ200_wggmhk.webp"}, {id: 5, nombre: "Cebolla", descripcion: "Muzzarella, cebolla morada, olivas negras.", precio: 700, cantidad: 1, img: "https://res.cloudinary.com/digb4d0uf/image/upload/v1652139889/JS%20CoderHouse/onion200_zc6bmy.webp"}, {id: 6, nombre: "Salchichas", descripcion: "Salsa, muzzarella, champignones, salchichas, olivas negras.", precio: 800, cantidad: 1, img: "https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/sausage200_vtn9k0.webp"}]
 
 // --------------------------   pizza aleatoria    -------------------------------- //
 
@@ -44,99 +44,100 @@ btnConfirm.addEventListener("click", () => {
 
 // ------------------- [cards de pizzas] ------------------- //
 
-document.addEventListener('DOMContentLoaded', () => {
-    pizzaCards();
-})
+// document.addEventListener('DOMContentLoaded', () => {
+//     pizzaCards();
+// })
 
-function pizzaCards(){
-    for(const pizza of pizzasVariedad){
+// function pizzaCards(){
+//     for(const pizza of pizzasVariedad){
 
-        //contenedor de las cards
-        const divCardsContainer = document.createElement('div')
-        divCardsContainer.classList.add("cardsContainer", "row", "col-5", "col-sm-6", "col-md-10", "col-lg-12", "mx-auto")
+//         //contenedor de las cards
+//         const divCardsContainer = document.createElement('div')
+//         divCardsContainer.classList.add("cardsContainer", "row", "col-5", "col-sm-6", "col-md-10", "col-lg-12", "mx-auto")
         
-        //card
-        const divCard = document.createElement('div')
-        divCard.classList.add("card", "mb-3", "mx-auto")
-        divCard.style.cssText = "max-width: 540px;"
+//         //card
+//         const divCard = document.createElement('div')
+//         divCard.classList.add("card", "mb-3", "mx-auto")
+//         divCard.style.cssText = "max-width: 540px;"
         
-        //filas
-        const divRow = document.createElement('div')
-        divRow.classList.add("row", "g-0")
+//         //filas
+//         const divRow = document.createElement('div')
+//         divRow.classList.add("row", "g-0")
         
-        //columna de imagen
-        const divColImg = document.createElement('div')
-        divColImg.classList.add("col-md-4", "col-sm-12", "p-3")
+//         //columna de imagen
+//         const divColImg = document.createElement('div')
+//         divColImg.classList.add("col-md-4", "col-sm-12", "p-3")
 
-        //imagen
-        const img = document.createElement('img')
-        img.classList.add("img-fluid", "rounded-start")
-        img.src = pizza.img;
+//         //imagen
+//         const img = document.createElement('img')
+//         img.classList.add("img-fluid", "rounded-start")
+//         img.src = pizza.img;
 
-        //columna del card-body
-        const divColCard = document.createElement('div')
-        divColCard.classList.add("col-md-8")
+//         //columna del card-body
+//         const divColCard = document.createElement('div')
+//         divColCard.classList.add("col-md-8")
         
-        //body de la card
-        const divCardBody = document.createElement('div')
-        divCardBody.classList.add("card-body", "mt-3")
+//         //body de la card
+//         const divCardBody = document.createElement('div')
+//         divCardBody.classList.add("card-body", "mt-3")
 
-        //título
-        const h5Title = document.createElement('h5')
-        h5Title.classList.add("card-title")
-        h5Title.textContent = pizza.nombre;
+//         //título
+//         const h5Title = document.createElement('h5')
+//         h5Title.classList.add("card-title")
+//         h5Title.textContent = pizza.nombre;
 
-        //texto
-        const pText = document.createElement('p')
-        pText.classList.add("card-text", "text-muted", "mt-3")
-        pText.textContent = pizza.descripcion + " -$" + pizza.precio;
+//         //texto
+//         const pText = document.createElement('p')
+//         pText.classList.add("card-text", "text-muted", "mt-3")
+//         pText.textContent = pizza.descripcion + " -$" + pizza.precio;
        
-        //botones
-        //añadir
-        const addButton = document.createElement('button')
-        addButton.classList.add("botonAgregar", "btn", "col-3", "btn-warning")
-        addButton.textContent = "+"
+//         //botones
+//         //añadir
+//         const addButton = document.createElement('button')
+//         addButton.classList.add("botonAgregar", "btn", "col-3", "btn-warning")
+//         addButton.textContent = "+"
 
-        //restar
-        const removeButton = document.createElement('button')
-        removeButton.classList.add("botonEliminar", "btn", "col-3", "btn-warning", "m-1")
-        removeButton.textContent = "-"
+//         //restar
+//         const removeButton = document.createElement('button')
+//         removeButton.classList.add("botonEliminar", "btn", "col-3", "btn-warning", "m-1")
+//         removeButton.textContent = "-"
 
-        //borrar todo
-        const removeAllButton = document.createElement('button')
-        removeAllButton.classList.add("btn", "col-3", "btn-warning")    
-        removeAllButton.textContent = "❌"        
+//         //borrar todo
+//         const removeAllButton = document.createElement('button')
+//         removeAllButton.classList.add("botonVaciarItem", "btn", "col-3", "btn-warning")    
+//         removeAllButton.textContent = "❌"        
        
         
-        divCardsContainer.appendChild(divCard)
-        divCard.appendChild(divRow)
-        divRow.appendChild(divColImg)
-        divColImg.appendChild(img)
+//         divCardsContainer.appendChild(divCard)
+//         divCard.appendChild(divRow)
+//         divRow.appendChild(divColImg)
+//         divColImg.appendChild(img)
         
-        divRow.appendChild(divColCard)
-        divColCard.appendChild(divCardBody)
-        divCardBody.appendChild(h5Title)
-        divCardBody.appendChild(pText)
+//         divRow.appendChild(divColCard)
+//         divColCard.appendChild(divCardBody)
+//         divCardBody.appendChild(h5Title)
+//         divCardBody.appendChild(pText)
 
-        divCardBody.appendChild(addButton)
-        divCardBody.appendChild(removeButton)
-        divCardBody.appendChild(removeAllButton)
+//         divCardBody.appendChild(addButton)
+//         divCardBody.appendChild(removeButton)
+//         divCardBody.appendChild(removeAllButton)
 
-        containerPizzas.appendChild(divCardsContainer)
+//         containerPizzas.appendChild(divCardsContainer)
 
-        addButton.onclick = () => {
-            addToCart(pizza.nombre, pizza.precio, pizza.cantidad)
-        }
+//         addButton.onclick = () => {
+//             addToCart(pizza.nombre, pizza.precio, pizza.cantidad)
+//             console.log(addButton.target)
+//         }
 
-        removeButton.onclick = () => {
-            removeFromCart(pizza.nombre)
-        }
+//         removeButton.onclick = () => {
+//             removeFromCart(pizza.nombre)
+//         }
 
-        removeAllButton.onclick = () => {
-            removeAllFromCart(pizza.nombre)
-        }        
-    }
-}
+//         removeAllButton.onclick = () => {
+//             removeAllFromCart(pizza.nombre)
+//         }        
+//     }
+// }
 
 
 
@@ -236,4 +237,15 @@ function countDisplay(){
         cant += cart[i].cantidad 
     }
     document.querySelector('.countDisplay').innerHTML = cant;
+}
+
+// ------------------------------------------------------------ //
+
+const buttons = document.querySelector('.cardButtons');
+
+(()=>{buttons.addEventListener('click', delegar)})();
+
+function delegar(evt){
+    evt.preventDefault();
+    console.log(evt.target.classList)
 }
