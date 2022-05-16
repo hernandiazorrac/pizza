@@ -7,6 +7,10 @@
     margin: 0 auto;
 }
 
+.card{
+    cursor: pointer;
+}
+
 .textoLogo{
     margin: 7% 10%;
 }
@@ -26,8 +30,6 @@
     border-radius: 5px;
     background-color:rgba(211, 211, 211, 0.253);
 }
-
-
 
 #imgPizza, #imgPizza2{
     height: 400px;
@@ -60,6 +62,27 @@
 .buttons__item:hover{
     background-color: rgb(247, 247, 247);
 }
+
+.shopping-cart-header {
+    border-bottom: 1px solid #ccc;
+  }
+
+.shopping-cart-quantity-input {
+    max-width: 45px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #eee;
+    padding: 5px;
+  }
+
+  .shoppingCartTotal{
+      font-size: 25px;
+      min-height: 96px;
+  }
+
+  .shoppingCart{
+      padding-top: 50px;
+  }
 
 
 /* .cardsContainer{
