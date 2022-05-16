@@ -40,107 +40,6 @@ btnConfirm.addEventListener("click", () => {
         }
 })
 
-
-
-// ------------------- [cards de pizzas] ------------------- //
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     pizzaCards();
-// })
-
-// function pizzaCards(){
-//     for(const pizza of pizzasVariedad){
-
-//         //contenedor de las cards
-//         const divCardsContainer = document.createElement('div')
-//         divCardsContainer.classList.add("cardsContainer", "row", "col-5", "col-sm-6", "col-md-10", "col-lg-12", "mx-auto")
-        
-//         //card
-//         const divCard = document.createElement('div')
-//         divCard.classList.add("card", "mb-3", "mx-auto")
-//         divCard.style.cssText = "max-width: 540px;"
-        
-//         //filas
-//         const divRow = document.createElement('div')
-//         divRow.classList.add("row", "g-0")
-        
-//         //columna de imagen
-//         const divColImg = document.createElement('div')
-//         divColImg.classList.add("col-md-4", "col-sm-12", "p-3")
-
-//         //imagen
-//         const img = document.createElement('img')
-//         img.classList.add("img-fluid", "rounded-start")
-//         img.src = pizza.img;
-
-//         //columna del card-body
-//         const divColCard = document.createElement('div')
-//         divColCard.classList.add("col-md-8")
-        
-//         //body de la card
-//         const divCardBody = document.createElement('div')
-//         divCardBody.classList.add("card-body", "mt-3")
-
-//         //título
-//         const h5Title = document.createElement('h5')
-//         h5Title.classList.add("card-title")
-//         h5Title.textContent = pizza.nombre;
-
-//         //texto
-//         const pText = document.createElement('p')
-//         pText.classList.add("card-text", "text-muted", "mt-3")
-//         pText.textContent = pizza.descripcion + " -$" + pizza.precio;
-       
-//         //botones
-//         //añadir
-//         const addButton = document.createElement('button')
-//         addButton.classList.add("botonAgregar", "btn", "col-3", "btn-warning")
-//         addButton.textContent = "+"
-
-//         //restar
-//         const removeButton = document.createElement('button')
-//         removeButton.classList.add("botonEliminar", "btn", "col-3", "btn-warning", "m-1")
-//         removeButton.textContent = "-"
-
-//         //borrar todo
-//         const removeAllButton = document.createElement('button')
-//         removeAllButton.classList.add("botonVaciarItem", "btn", "col-3", "btn-warning")    
-//         removeAllButton.textContent = "❌"        
-       
-        
-//         divCardsContainer.appendChild(divCard)
-//         divCard.appendChild(divRow)
-//         divRow.appendChild(divColImg)
-//         divColImg.appendChild(img)
-        
-//         divRow.appendChild(divColCard)
-//         divColCard.appendChild(divCardBody)
-//         divCardBody.appendChild(h5Title)
-//         divCardBody.appendChild(pText)
-
-//         divCardBody.appendChild(addButton)
-//         divCardBody.appendChild(removeButton)
-//         divCardBody.appendChild(removeAllButton)
-
-//         containerPizzas.appendChild(divCardsContainer)
-
-//         addButton.onclick = () => {
-//             addToCart(pizza.nombre, pizza.precio, pizza.cantidad)
-//             console.log(addButton.target)
-//         }
-
-//         removeButton.onclick = () => {
-//             removeFromCart(pizza.nombre)
-//         }
-
-//         removeAllButton.onclick = () => {
-//             removeAllFromCart(pizza.nombre)
-//         }        
-//     }
-// }
-
-
-
 // ----------------------   [carrito]   ---------------------- //
 
 let cart = []
@@ -162,6 +61,7 @@ function addToCart(nombre, precio, cantidad){
             cart[i].cantidad += 1;
             console.table(cart);
             console.log("El total es: $" + totalCart())
+            saveCart()
             return;
         }
     }
@@ -171,6 +71,7 @@ function addToCart(nombre, precio, cantidad){
     cart.push(item);
     console.table(cart);
     console.log("El total es: $" + totalCart())
+    saveCart()
 }
 
 // ------------------------------------------------------------ //
@@ -190,6 +91,7 @@ function removeFromCart(nombre){
             return;
         }
     }
+    saveCart()
 }
 
 // ------------------------------------------------------------ //
@@ -202,6 +104,7 @@ function removeAllFromCart(nombre){
             cart.splice(i, 1);
             console.table(cart);
             console.log("El total es: $" + totalCart())
+            saveCart()
             return;
         }
     }
@@ -214,6 +117,7 @@ function removeAllFromCart(nombre){
 function clearCart(){
     cart = [];
     console.table(cart)
+    saveCart()
 }
 
 // ------------------------------------------------------------ //
@@ -231,21 +135,34 @@ function totalCart(){
 
 // muestra la cantidad del mismo item
 
-function countDisplay(){
-    let cant = 0;
-    for(let i in cart){
-        cant += cart[i].cantidad 
-    }
-    document.querySelector('.countDisplay').innerHTML = cant;
-}
+// function countDisplay(){
+//     let cant = 0;
+//     for(let i in cart){
+//         cant += cart[i].cantidad 
+//     }
+//     document.querySelector('.countDisplay').innerHTML = cant;
+// }
 
 // ------------------------------------------------------------ //
 
-const buttons = document.querySelector('.cardButtons');
+// const buttons = document.querySelector('.cardButtons');
 
-(()=>{buttons.addEventListener('click', delegar)})();
+// (()=>{buttons.addEventListener('click', delegar)})();
 
-function delegar(evt){
-    evt.preventDefault();
-    console.log(evt.target.classList)
+// function delegar(evt){
+//     evt.preventDefault();
+//     console.log(evt.target.classList)
+// }
+
+// --------------------------- guardar carrito ---------------------------//
+
+function saveCart(){
+    localStorage.setItem("shoppingCart", JSON.stringify(cart));
 }
+
+function loadCart(){
+    cart = JSON.parse(localStorage.getItem("shoppingCart"));
+}
+loadCart()
+
+console.table(cart);
