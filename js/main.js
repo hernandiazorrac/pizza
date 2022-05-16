@@ -88,10 +88,10 @@ function removeFromCart(nombre){
             }
             console.table(cart);
             console.log("El total es: $" + totalCart())
+            saveCart()
             return;
         }
     }
-    saveCart()
 }
 
 // ------------------------------------------------------------ //
@@ -165,4 +165,5 @@ function loadCart(){
 }
 loadCart()
 
-console.table(cart);
+let cartLoaded = cart;
+console.table(cartLoaded);
