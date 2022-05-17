@@ -82,10 +82,11 @@ function removeFromCart(nombre){
     for(let i in cart){
         if(cart[i].nombre === nombre){
             cart[i].cantidad -= 1;
+            cart[i].cantidad === 0 && cart.splice(i,1);
 
-            if(cart[i].cantidad === 0){
-                cart.splice(i, 1);
-            }
+            // if(cart[i].cantidad === 0){
+            //     cart.splice(i, 1);
+            // }
             console.table(cart);
             console.log("El total es: $" + totalCart())
             return;
@@ -104,10 +105,11 @@ function removeAllFromCart(nombre){
             cart.splice(i, 1);
             console.table(cart);
             console.log("El total es: $" + totalCart())
+            saveCart()
             return;
         }
     }
-    saveCart()
+    
 }
 
 // ------------------------------------------------------------ //
@@ -160,8 +162,14 @@ function saveCart(){
 }
 
 function loadCart(){
-    carrito = JSON.parse(localStorage.getItem("shoppingCart"));
-    console.table(carrito)
+    let carritoStorage = JSON.parse(localStorage.getItem("shoppingCart"));
+    console.table(carritoStorage)
+
+    if(carritoStorage){
+        cart = carritoStorage
+    }else{
+        cart = []
+    }
 }
 
 loadCart();
