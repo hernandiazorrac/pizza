@@ -84,15 +84,13 @@ function removeFromCart(nombre){
             cart[i].cantidad -= 1;
             cart[i].cantidad === 0 && cart.splice(i,1);
 
-            // if(cart[i].cantidad === 0){
-            //     cart.splice(i, 1);
-            // }
             console.table(cart);
             console.log("El total es: $" + totalCart())
+            saveCart()
             return;
         }
     }
-    saveCart()
+    
 }
 
 // ------------------------------------------------------------ //
