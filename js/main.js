@@ -165,6 +165,7 @@ function loadCart(){
 
     if(carritoStorage){
         cart = carritoStorage
+        console.log("El total es: $" + totalCart())
     }else{
         cart = []
     }
