@@ -155,9 +155,6 @@ function totalCart(){
 // }
 
 // --------------------------- guardar carrito ---------------------------//
-
-
-
 function saveCart(){
     localStorage.setItem("shoppingCart", JSON.stringify(cart));
 }
