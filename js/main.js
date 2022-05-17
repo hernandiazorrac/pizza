@@ -32,12 +32,8 @@ function randomImg(){
 const btnConfirm = document.querySelector(".confirmPizza")
 
 btnConfirm.addEventListener("click", () => {
-    let confirmar = confirm("\n¿Querés confirmar tu pedido?");
-        if(confirmar){
-            console.log("¡Muchas gracias por tu compra!");
-            alert("¡Muchas gracias por tu compra!");
-        }else{
-        }
+    let confirmar = confirm("\n¿Querés confirmar tu pedido?");    
+    confirmar ? (alert('¡Muchas gracias por tu compra') + console.log("¡Muchas gracias por tu compra!")) : null;
 })
 
 // ----------------------   [carrito]   ---------------------- //
@@ -57,7 +53,8 @@ function addToCart(nombre, precio, cantidad){
     
     //si existe el item, incrementar cantidad
     for (let i in cart){
-        if (cart[i].nombre === nombre){
+
+            if (cart[i].nombre === nombre){
             cart[i].cantidad += 1;
             console.table(cart);
             console.log("El total es: $" + totalCart())
@@ -80,45 +77,29 @@ function addToCart(nombre, precio, cantidad){
 
 function removeFromCart(nombre){
     for(let i in cart){
-        if(cart[i].nombre === nombre){
-            cart[i].cantidad -= 1;
-            cart[i].cantidad === 0 && cart.splice(i,1);
-
-            console.table(cart);
-            console.log("El total es: $" + totalCart())
-            saveCart()
-            return;
+        cart[i].nombre === nombre && (cart[i].cantidad -= 1) + (cart[i].cantidad === 0 && cart.splice(i,1)) + (console.table(cart)) + (console.log("El total es: $" + totalCart()) + saveCart())
         }
     }
     
-}
-
 // ------------------------------------------------------------ //
 
 //eliminar del carrito
 
 function removeAllFromCart(nombre){
     for(let i in cart){
-        if(cart[i].nombre === nombre){
-            cart.splice(i, 1);
-            console.table(cart);
-            console.log("El total es: $" + totalCart())
-            saveCart()
-            return;
+        cart[i].nombre === nombre && (cart.splice(i, 1)) + (console.table(cart)) + (console.log("El total es: $" + totalCart())) + (saveCart())
         }
     }
-    
-}
 
 // ------------------------------------------------------------ //
 
 //vaciar el carrito
 
-function clearCart(){
-    cart = [];
-    console.table(cart)
-    saveCart()
-}
+// function clearCart(){
+//     cart = [];
+//     console.table(cart)
+//     saveCart()
+// }
 
 // ------------------------------------------------------------ //
 
@@ -131,30 +112,9 @@ function totalCart(){
     }
     return totalPrice;
 }
-// ------------------------------------------------------------ //
-
-// muestra la cantidad del mismo item
-
-// function countDisplay(){
-//     let cant = 0;
-//     for(let i in cart){
-//         cant += cart[i].cantidad 
-//     }
-//     document.querySelector('.countDisplay').innerHTML = cant;
-// }
-
-// ------------------------------------------------------------ //
-
-// const buttons = document.querySelector('.cardButtons');
-
-// (()=>{buttons.addEventListener('click', delegar)})();
-
-// function delegar(evt){
-//     evt.preventDefault();
-//     console.log(evt.target.classList)
-// }
 
 // --------------------------- guardar carrito ---------------------------//
+
 function saveCart(){
     localStorage.setItem("shoppingCart", JSON.stringify(cart));
 }
@@ -163,12 +123,7 @@ function loadCart(){
     let carritoStorage = JSON.parse(localStorage.getItem("shoppingCart"));
     console.table(carritoStorage)
 
-    if(carritoStorage){
-        cart = carritoStorage
-        console.log("El total es: $" + totalCart())
-    }else{
-        cart = []
-    }
+    carritoStorage ? ((cart = carritoStorage) + (console.log("El total es: $" + totalCart()))) : (cart = [])
 }
 
 loadCart();
