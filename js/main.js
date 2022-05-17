@@ -88,10 +88,10 @@ function removeFromCart(nombre){
             }
             console.table(cart);
             console.log("El total es: $" + totalCart())
-            saveCart()
             return;
         }
     }
+    saveCart()
 }
 
 // ------------------------------------------------------------ //
@@ -104,10 +104,10 @@ function removeAllFromCart(nombre){
             cart.splice(i, 1);
             console.table(cart);
             console.log("El total es: $" + totalCart())
-            saveCart()
             return;
         }
     }
+    saveCart()
 }
 
 // ------------------------------------------------------------ //
@@ -161,9 +161,6 @@ function saveCart(){
 }
 
 function loadCart(){
-    cart = JSON.parse(localStorage.getItem("shoppingCart"));
+    carrito = JSON.parse(localStorage.getItem("shoppingCart"));
+    console.table(carrito)
 }
-loadCart()
-
-let cartLoaded = cart;
-console.table(cartLoaded);
