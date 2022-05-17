@@ -156,6 +156,8 @@ function totalCart(){
 
 // --------------------------- guardar carrito ---------------------------//
 
+
+
 function saveCart(){
     localStorage.setItem("shoppingCart", JSON.stringify(cart));
 }
@@ -164,3 +166,5 @@ function loadCart(){
     carrito = JSON.parse(localStorage.getItem("shoppingCart"));
     console.table(carrito)
 }
+
+loadCart();
