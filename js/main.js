@@ -29,12 +29,37 @@ function randomImg(){
 
 //pop up de confirmar pedido
 
-const btnConfirm = document.querySelector(".confirmPizza")
+// const btnConfirm = document.querySelector(".confirmPizza")
 
-btnConfirm.addEventListener("click", () => {
-    let confirmar = confirm("\n¿Querés confirmar tu pedido?");    
-    confirmar ? (alert('¡Muchas gracias por tu compra') + console.log("¡Muchas gracias por tu compra!")) : null;
-})
+// btnConfirm.addEventListener("click", () => {
+//     let confirmar = confirm("\n¿Querés confirmar tu pedido?");    
+//     confirmar ? (alert('¡Muchas gracias por tu compra') + console.log("¡Muchas gracias por tu compra!")) : null;
+// })
+
+function modalPizza(){
+
+    Swal.fire({
+    title: `<div class="pizzaRandom">
+    <div class="imgContainer">
+      <img id="imgPizza">
+      <img id="imgPizza2">
+    </div>`,
+    showCancelButton: false,
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    allowEscapeKey: true,
+    showCloseButton: true,
+    html: `<div class="p-4">
+    <button class="btn btn-warning" onclick="randomImg()">Pizza aleatoria</button>
+    <button class="btn btn-success" onclick="Swal.fire(
+        'Pedido aceptado',
+        '¡Estamos preparando tu pizza!',
+        'success'
+      )">Confirmar</button>
+  </div>`
+  })
+  randomImg();
+}
 
 // ----------------------   [carrito]   ---------------------- //
 

@@ -61,14 +61,12 @@
     background-color: rgb(247, 247, 247);
 }
 
+body.swal2-shown > [aria-hidden="true"] {
+    transition: 0.1s filter;
+    filter: blur(3px);
+  }
 
-/* .cardsContainer{
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    padding: 70px 0;
-} */
-
+  
 @media (max-width: 576px){
 
     #imgPizza, #imgPizza2{
