@@ -1,0 +1,55 @@
+[   
+    {
+        "id": 1,
+        "nombre":"Pepperoni",
+        "descripcion": "Salsa, muzzarella, rodajas de pepperoni.",
+        "precio": 800,
+        "cantidad": 1,
+        "img": "https://res.cloudinary.com/digb4d0uf/image/upload/v1652139887/JS%20CoderHouse/pepperoni200_gpvvj6.webp"
+    },
+    
+    {
+        "id": 2,
+        "nombre": "Margarita",
+        "descripcion": "Salsa, muzzarella, albahaca.",
+        "precio": 700,
+        "cantidad": 1,
+        "img": "https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/margherita200_unlsey.webp"
+    },
+
+    {   
+        "id": 3,
+        "nombre": "Napolitana",
+        "descripcion": "Salsa, parmesano, albahaca.",
+        "precio": 900,
+        "cantidad": 1,
+        "img": "https://res.cloudinary.com/digb4d0uf/image/upload/v1652139889/JS%20CoderHouse/napolitana200_gyc07e.webp"
+    },
+        
+    {
+        "id": 4,
+        "nombre": "Champignones",
+        "descripcion": "Salsa, muzzarella, champignones, tomate, olivas negras.",
+        "precio": 900,
+        "cantidad": 1,
+        "img": "https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/champ200_wggmhk.webp"
+    },
+        
+    {
+        "id": 5,
+        "nombre": "Cebolla",
+        "descripcion": "Muzzarella, cebolla morada, olivas negras.",
+        "precio": 700,
+        "cantidad": 1,
+        "img": "https://res.cloudinary.com/digb4d0uf/image/upload/v1652139889/JS%20CoderHouse/onion200_zc6bmy.webp"
+    },
+    
+    {
+        "id": 6,
+        "nombre": "Salchichas",
+        "descripcion": "Salsa, muzzarella, champignones, salchichas, olivas negras.",
+        "precio": 800,
+        "cantidad": 1,
+        "img": "https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/sausage200_vtn9k0.webp"
+    }
+]
