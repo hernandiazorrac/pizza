@@ -180,7 +180,6 @@ function loadJSON(){
     </div>
   </div>
             `
-            console.log(product)
         });
         productList.innerHTML = html;
     })
