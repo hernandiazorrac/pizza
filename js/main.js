@@ -148,7 +148,7 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 function loadJSON(){
-    fetch('https://github.com/hernandiazorrac/pizza/blob/main/json/pizzas.json') // hace fetch al json hosteado en github
+    fetch('https://hernandiazorrac.github.io/json/pizzas.json') // hace fetch al json hosteado en github
     //fetch('./json/pizzas.json')  -> descomentar para usar live server
     .then(response => response.json())
     .then(data => {
