@@ -148,7 +148,8 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 function loadJSON(){
-    fetch('./json/pizzas.json')
+    fetch('https://hernandiazorrac.github.io/json/pizzas.json')
+    //fetch('./json/pizzas.json')
     .then(response => response.json())
     .then(data => {
         let html = ``;
