@@ -141,7 +141,7 @@ loadCart();
 
 // --------------------------- leer datos de productos ---------------------------//
 
-const productList = document.querySelector('.cardsContainer ')
+const productList = document.querySelector('.cardsContainer')
 
 window.addEventListener('DOMContentLoaded', () => {
     loadJSON();
