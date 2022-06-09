@@ -1,5 +1,47 @@
-let pizzaArrayL = ['napolitana1.png', 'margherita1.png', 'onion1.png', 'pepperoni1.png', 'champ1.png', 'sausage1.png'] //array de imágenes de pizzas
-let pizzaArrayR = ['champ2.png', 'pepperoni2.png', 'napolitana2.png', 'margherita2.png', 'sausage2.png', 'onion2.png']
+let pizzaArrayL = [{
+    nombre: "napolitana",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/napolitana1_eqqqik.webp',
+    precio: 900},
+
+    {nombre: "margarita",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/margherita1_zdebmz.webp',
+    precio: 700},
+    
+    {nombre: "cebolla",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139889/JS%20CoderHouse/onion1_silhwp.webp',
+    precio: 700},
+    
+    {nombre: "pepperoni",
+    img:'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139887/JS%20CoderHouse/pepperoni1_iwzt4a.webp',
+    precio: 800},
+        
+    {nombre: "champignones",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/champ1_vhdqcx.webp',
+    precio: 900},
+    
+    {nombre: "salchichas",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139887/JS%20CoderHouse/sausage1_zyjuqv.webp',
+    precio: 800}]
+
+    
+let pizzaArrayR = [{
+    nombre: "champi",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/champ2_hoy7ho.webp'},
+    
+    {nombre: "pepperoni",
+    img:'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139887/JS%20CoderHouse/pepperoni2_zur7ra.webp'},
+    
+    {nombre: "napolitana",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139889/JS%20CoderHouse/napolitana2_manwdm.webp'},
+    
+    {nombre: "margarita",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/margherita2_srxmbc.webp'},
+    
+    {nombre: "salchichas",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/sausage2_lniueh.webp'},
+    
+    {nombre: "cebolla",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139889/JS%20CoderHouse/onion2_m04yxb.webp'}]
 
 // ------------------------------------------------------------ //
 
@@ -11,135 +53,80 @@ const pizzasVariedad = [{id: 1, nombre: "Pepperoni", descripcion: "Salsa, muzzar
 
 // --------------------------   pizza aleatoria    -------------------------------- //
 
-randomImg();
-
-//genera imagen aleatoria
 function randomImg(){ 
     //elige un valor aleatorio del array
-    let randomArray = Math.floor(Math.random() * pizzaArrayL.length);
-    let randomArray2 = Math.floor(Math.random() * pizzaArrayR.length);
-
-    let selectImg = pizzaArrayL[randomArray]
-    let selectImg2 = pizzaArrayR[randomArray2]
+    let randomArray = pizzaArrayL[Math.floor(Math.random() * pizzaArrayL.length)].img;
+    let randomArray2 = pizzaArrayR[Math.floor(Math.random() * pizzaArrayR.length)].img;
 
     //ruta de donde se obtienen las imágenes
-    document.getElementById('imgPizza').src = `./assets/img/${selectImg}`; 
-    document.getElementById('imgPizza2').src = `./assets/img/${selectImg2}`;
+    document.getElementById('imgPizza').src = randomArray; 
+    document.getElementById('imgPizza2').src = randomArray2;
 }
 
-//pop up de confirmar pedido
-
-const btnConfirm = document.querySelector(".confirmPizza")
-
-btnConfirm.addEventListener("click", () => {
-    let confirmar = confirm("\n¿Querés confirmar tu pedido?");
-        if(confirmar){
-            console.log("¡Muchas gracias por tu compra!");
-            alert("¡Muchas gracias por tu compra!");
-        }else{
-        }
-})
-
+// modal para elegir pizza aleatoria
+function modalPizza(){
+    Swal.fire({
+        title: `<div class="pizzaRandom">
+        <div class="imgContainer">
+        <img id="imgPizza">
+        <img id="imgPizza2">
+        </div>
+        <div class="pizzasRandomTexto"></div>`,
+        showCancelButton: false,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: true,
+        showCloseButton: true,
+        html: `<div class="p-4">
+        <button class="btn btn-warning" onclick="randomImg()">Pizza aleatoria</button>
+        <button class="btn btn-success" onclick="Swal.fire(
+            'Pedido aceptado',
+            '¡Estamos preparando tu pizza!',
+            'success'
+        )">Confirmar</button>
+    </div>`
+  })
+  randomImg();
+}
 
 
 // ------------------- [cards de pizzas] ------------------- //
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     pizzaCards();
-// })
-
-// function pizzaCards(){
-//     for(const pizza of pizzasVariedad){
-
-//         //contenedor de las cards
-//         const divCardsContainer = document.createElement('div')
-//         divCardsContainer.classList.add("cardsContainer", "row", "col-5", "col-sm-6", "col-md-10", "col-lg-12", "mx-auto")
-        
-//         //card
-//         const divCard = document.createElement('div')
-//         divCard.classList.add("card", "mb-3", "mx-auto")
-//         divCard.style.cssText = "max-width: 540px;"
-        
-//         //filas
-//         const divRow = document.createElement('div')
-//         divRow.classList.add("row", "g-0")
-        
-//         //columna de imagen
-//         const divColImg = document.createElement('div')
-//         divColImg.classList.add("col-md-4", "col-sm-12", "p-3")
-
-//         //imagen
-//         const img = document.createElement('img')
-//         img.classList.add("img-fluid", "rounded-start")
-//         img.src = pizza.img;
-
-//         //columna del card-body
-//         const divColCard = document.createElement('div')
-//         divColCard.classList.add("col-md-8")
-        
-//         //body de la card
-//         const divCardBody = document.createElement('div')
-//         divCardBody.classList.add("card-body", "mt-3")
-
-//         //título
-//         const h5Title = document.createElement('h5')
-//         h5Title.classList.add("card-title")
-//         h5Title.textContent = pizza.nombre;
-
-//         //texto
-//         const pText = document.createElement('p')
-//         pText.classList.add("card-text", "text-muted", "mt-3")
-//         pText.textContent = pizza.descripcion + " -$" + pizza.precio;
-       
-//         //botones
-//         //añadir
-//         const addButton = document.createElement('button')
-//         addButton.classList.add("botonAgregar", "btn", "col-3", "btn-warning")
-//         addButton.textContent = "+"
-
-//         //restar
-//         const removeButton = document.createElement('button')
-//         removeButton.classList.add("botonEliminar", "btn", "col-3", "btn-warning", "m-1")
-//         removeButton.textContent = "-"
-
-//         //borrar todo
-//         const removeAllButton = document.createElement('button')
-//         removeAllButton.classList.add("botonVaciarItem", "btn", "col-3", "btn-warning")    
-//         removeAllButton.textContent = "❌"        
-       
-        
-//         divCardsContainer.appendChild(divCard)
-//         divCard.appendChild(divRow)
-//         divRow.appendChild(divColImg)
-//         divColImg.appendChild(img)
-        
-//         divRow.appendChild(divColCard)
-//         divColCard.appendChild(divCardBody)
-//         divCardBody.appendChild(h5Title)
-//         divCardBody.appendChild(pText)
-
-//         divCardBody.appendChild(addButton)
-//         divCardBody.appendChild(removeButton)
-//         divCardBody.appendChild(removeAllButton)
-
-//         containerPizzas.appendChild(divCardsContainer)
-
-//         addButton.onclick = () => {
-//             addToCart(pizza.nombre, pizza.precio, pizza.cantidad)
-//             console.log(addButton.target)
-//         }
-
-//         removeButton.onclick = () => {
-//             removeFromCart(pizza.nombre)
-//         }
-
-//         removeAllButton.onclick = () => {
-//             removeAllFromCart(pizza.nombre)
-//         }        
-//     }
-// }
+const productList = document.querySelector('.cardsContainer');
 
 
+window.addEventListener('DOMContentLoaded', () => {
+    loadJSON();
+})
+
+
+
+function loadJSON(){
+    // fetch('https://raw.githubusercontent.com/hernandiazorrac/pizza/main/json/pizzas.json') // hace fetch al json hosteado en github
+    fetch('./json/pizzas.json') // -> descomentar para usar live server
+    .then(response => response.json())
+    .then(data => {
+        let html = ``;
+        data.forEach(product => {
+            html += `
+            <div class="productItem card mb-3 mx-auto" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="productImg col-md-4 p-3">
+                    <img src="${product.img}" class="img-fluid rounded-start" alt="Pizza de pepperoni">
+                </div>
+        <div class="col-md-8">
+            <div class="productContent card-body mt-3">
+                <h5 class="productName card-title">${product.nombre}</h5>
+                <span class="productDescription card-text text-muted mt-3">${product.descripcion}</span>
+                <p class="productPrice text-muted">$${product.precio}</p>
+    </div>
+  </div>
+</div>
+</div> `
+        });
+        productList.innerHTML = html;
+    })
+}
 
 // ----------------------   [carrito]   ---------------------- //
 
