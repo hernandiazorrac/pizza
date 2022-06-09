@@ -1,9 +1,47 @@
-let pizzaArrayL = ['napolitana1.png', 'margherita1.png', 'onion1.png', 'pepperoni1.png', 'champ1.png', 'sausage1.png'] //array de imágenes de pizzas
-let pizzaArrayR = ['champ2.png', 'pepperoni2.png', 'napolitana2.png', 'margherita2.png', 'sausage2.png', 'onion2.png']
+let pizzaArrayL = [{
+    nombre: "napolitana",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/napolitana1_eqqqik.webp',
+    precio: 900},
 
-// ------------------------------------------------------------ //
+    {nombre: "margarita",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/margherita1_zdebmz.webp',
+    precio: 700},
+    
+    {nombre: "cebolla",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139889/JS%20CoderHouse/onion1_silhwp.webp',
+    precio: 700},
+    
+    {nombre: "pepperoni",
+    img:'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139887/JS%20CoderHouse/pepperoni1_iwzt4a.webp',
+    precio: 800},
+        
+    {nombre: "champignones",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/champ1_vhdqcx.webp',
+    precio: 900},
+    
+    {nombre: "salchichas",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139887/JS%20CoderHouse/sausage1_zyjuqv.webp',
+    precio: 800}]
 
-const containerPizzas = document.querySelector(".pizzasContainer")
+    
+let pizzaArrayR = [{
+    nombre: "champi",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/champ2_hoy7ho.webp'},
+    
+    {nombre: "pepperoni",
+    img:'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139887/JS%20CoderHouse/pepperoni2_zur7ra.webp'},
+    
+    {nombre: "napolitana",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139889/JS%20CoderHouse/napolitana2_manwdm.webp'},
+    
+    {nombre: "margarita",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/margherita2_srxmbc.webp'},
+    
+    {nombre: "salchichas",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139888/JS%20CoderHouse/sausage2_lniueh.webp'},
+    
+    {nombre: "cebolla",
+    img: 'https://res.cloudinary.com/digb4d0uf/image/upload/v1652139889/JS%20CoderHouse/onion2_m04yxb.webp'}]
 
 // --------------------------   pizza aleatoria    -------------------------------- //
 
@@ -11,15 +49,12 @@ const containerPizzas = document.querySelector(".pizzasContainer")
 
 function randomImg(){ 
     //elige un valor aleatorio del array
-    let randomArray = Math.floor(Math.random() * pizzaArrayL.length);
-    let randomArray2 = Math.floor(Math.random() * pizzaArrayR.length);
-
-    let selectImg = pizzaArrayL[randomArray]
-    let selectImg2 = pizzaArrayR[randomArray2]
+    let randomArray = pizzaArrayL[Math.floor(Math.random() * pizzaArrayL.length)].img;
+    let randomArray2 = pizzaArrayR[Math.floor(Math.random() * pizzaArrayR.length)].img;
 
     //ruta de donde se obtienen las imágenes
-    document.getElementById('imgPizza').src = `./assets/img/${selectImg}`; 
-    document.getElementById('imgPizza2').src = `./assets/img/${selectImg2}`;
+    document.getElementById('imgPizza').src = randomArray; 
+    document.getElementById('imgPizza2').src = randomArray2;
 }
 
 // modal para elegir pizza aleatoria
@@ -29,7 +64,8 @@ function modalPizza(){
         <div class="imgContainer">
         <img id="imgPizza">
         <img id="imgPizza2">
-        </div>`,
+        </div>
+        <div class="pizzasRandomTexto"></div>`,
         showCancelButton: false,
         showConfirmButton: false,
         allowOutsideClick: false,
@@ -47,105 +83,17 @@ function modalPizza(){
   randomImg();
 }
 
-// ----------------------   [carrito]   ---------------------- //
+// --------------------------- leer JSON de productos y mostrar cards dinámicamente ---------------------------//
 
-let cart = []
+const productList = document.querySelector('.cardsContainer');
 
-//agregar al carrito
-class Items {
-    constructor(nombre, precio, cantidad) {
-        this.nombre = nombre;
-        this.precio = parseInt(precio);
-        this.cantidad = parseInt(cantidad);
-    }
-}
-
-function addToCart(nombre, precio, cantidad){
-    
-    //si existe el item, incrementar cantidad
-    for (let i in cart){
-
-            if (cart[i].nombre === nombre){
-            cart[i].cantidad += 1;
-            console.table(cart);
-            console.log("El total es: $" + totalCart())
-            saveCart()
-            return;
-        }
-    }
-
-    //si no existe el item, agregarlo
-    let item = new Items (nombre, precio, cantidad);
-    cart.push(item);
-    console.table(cart);
-    console.log("El total es: $" + totalCart())
-    saveCart()
-}
-
-// ------------------------------------------------------------ //
-
-//eliminar del carrito de a uno
-
-function removeFromCart(nombre){
-    for(let i in cart){
-        cart[i].nombre === nombre && (cart[i].cantidad -= 1) + (cart[i].cantidad === 0 && cart.splice(i,1)) + (console.table(cart)) + (console.log("El total es: $" + totalCart()) + saveCart())
-        }
-    }
-    
-// ------------------------------------------------------------ //
-
-//eliminar del carrito
-
-function removeAllFromCart(nombre){
-    for(let i in cart){
-        cart[i].nombre === nombre && (cart.splice(i, 1)) + (console.table(cart)) + (console.log("El total es: $" + totalCart())) + (saveCart())
-        }
-    }
-
-// ------------------------------------------------------------ //
-
-//vaciar el carrito
-
-// function clearCart(){
-//     cart = [];
-//     console.table(cart)
-//     saveCart()
-// }
-
-// ------------------------------------------------------------ //
-
-//calcular total del carrito
-
-function totalCart(){
-    let totalPrice = 0;
-    for(let i in cart){
-        totalPrice += cart[i].precio * cart[i].cantidad;
-    }
-    return totalPrice;
-}
-
-// --------------------------- guardar carrito ---------------------------//
-
-function saveCart(){
-    localStorage.setItem("shoppingCart", JSON.stringify(cart));
-}
-
-function loadCart(){
-    let carritoStorage = JSON.parse(localStorage.getItem("shoppingCart"));
-    console.table(carritoStorage)
-
-    carritoStorage ? ((cart = carritoStorage) + (console.log("El total es: $" + totalCart()))) : (cart = [])
-}
-
-loadCart();
-
-// --------------------------- leer datos de productos ---------------------------//
-
-const productList = document.querySelector('.cardsContainer')
 
 window.addEventListener('DOMContentLoaded', () => {
     loadJSON();
+    loadCart();
 })
+
+
 
 function loadJSON(){
     fetch('https://raw.githubusercontent.com/hernandiazorrac/pizza/main/json/pizzas.json') // hace fetch al json hosteado en github
@@ -155,33 +103,166 @@ function loadJSON(){
         let html = ``;
         data.forEach(product => {
             html += `
-            <div class="card mb-3 mx-auto" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4 p-3">
-                        <img src="${product.img}" class="img-fluid rounded-start" alt="Pizza de pepperoni">
-                    </div>
-            <div class="col-md-8">
-                <div class="card-body mt-3">
-                    <h5 class="card-title">${product.nombre}</h5>
-                    <p class="card-text text-muted mt-3">Salsa, muzzarella, rodajas de pepperoni. — ${product.precio}</p>
-          <div class="cardButtons">
-          <button class="btn col-3 btn-warning mt-2" onclick="addToCart('${product.nombre}', '${product.precio}', '${product.cantidad}')">+</button>
-          <button class="btn col-3 btn-warning mt-2" onclick="removeFromCart('${product.nombre}', '${product.precio}', ${product.cantidad})">-</button>
-          <button class="btn col-3 btn-warning mt-2" onclick="removeAllFromCart('${product.nombre}', '${product.precio}', '${product.cantidad}')"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <line x1="4" y1="7" x2="20" y2="7" />
-            <line x1="10" y1="11" x2="10" y2="17" />
-            <line x1="14" y1="11" x2="14" y2="17" />
-            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-            </svg></button>
-            </div>
+            <div class="productItem card mb-3 mx-auto" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="productImg col-md-4 p-3">
+                    <img src="${product.img}" class="img-fluid rounded-start" alt="Pizza de pepperoni">
+                </div>
+        <div class="col-md-8">
+            <div class="productContent card-body mt-3">
+                <h5 class="productName card-title">${product.nombre}</h5>
+                <span class="productDescription card-text text-muted mt-3">${product.descripcion}</span>
+                <p class="productPrice text-muted">$${product.precio}</p>
+      <div class="cardButtons">
+      <button class="addToCart btn btn-warning mt-2">Agregar</button>
         </div>
-      </div>
     </div>
   </div>
-            `
+</div>
+</div> `
         });
         productList.innerHTML = html;
     })
 }
+
+productList.addEventListener('click', purchaseProduct);
+
+// --------------------------- mostrar / ocultar carrito ---------------------------//
+
+const cartContainer = document.querySelector('.cartContainer');
+const cartList = document.querySelector('.cartList');
+const cartTotalValue = document.getElementById('cartTotalValue');
+const cartCountInfo = document.getElementById('cartCountInfo');
+
+let cartItemID = 1;
+
+document.getElementById('cartBtn').addEventListener('click', () => {
+    cartContainer.classList.toggle('showCartContainer');
+});
+
+// --------------------------- comprar productos ---------------------------//
+
+function purchaseProduct(e){
+    if(e.target.classList.contains('addToCart')){
+        let product = e.target.parentElement.parentElement.parentElement.parentElement;
+        getProductInfo(product)
+    }
+}
+
+// --------------------------- info de producto después de agregar ---------------------------//
+
+function getProductInfo(product){
+    let productInfo = {
+        id: cartItemID,
+        img: product.querySelector('.productImg img').src,
+        name: product.querySelector('.productName').textContent,
+        description: product.querySelector('.productDescription').textContent,
+        price: product.querySelector('.productPrice').textContent
+    }
+    cartItemID += 1;
+    addToCartList(productInfo);
+    saveCart(productInfo);
+}
+
+// --------------------------- agregar producto al carrito ---------------------------//
+
+function addToCartList(product){
+    const cartItem = document.createElement('div');
+    cartItem.classList.add('cartItem');
+    cartItem.setAttribute('data-id', `${product.id}`);
+    cartItem.innerHTML = `
+    <img src="${product.img}" alt="Imagen del producto">
+            <div class="cartItemInfo">
+              <h3 class="cartItemName">${product.name}</h3>
+              <p class="cartItemDescription text-truncate" style="max-width: 300px;">${product.description}</p>
+              
+              <input class="cartItemQuantity" type="number" value="1" min="1">
+              <span class="cartItemPrice">${product.price}</span>
+            </div>
+                
+            <button type="button" class="cartItemDeleteBtn">
+              <i class="fas fa-times"></i>
+            </button>
+    `;
+    cartList.appendChild(cartItem);
+    // cartItem.querySelector('.cartItemQuantity').addEventListener('change', quantityChanged)
+}
+
+//guardar el carrito en localStorage
+
+function saveCart(item){
+    let products = getProductFromStorage();
+    products.push(item)
+    localStorage.setItem('products', JSON.stringify(products));
+    updateCartInfo();
+}
+
+function getProductFromStorage(){
+    return localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : [];
+}
+
+//cargar carrito de localStorage
+
+function loadCart(){
+    let products = getProductFromStorage();
+    if(products.length < 1){
+        cartItemID = 1;
+    }else{
+        cartItemID = products[products.length - 1].id
+        cartItemID += 1;
+    }
+    products.forEach(product => addToCartList(product))
+    updateCartInfo();
+}
+
+function findCartInfo(){
+    let products = getProductFromStorage();
+    let total = products.reduce((acc, product) =>{
+        let price = parseInt(product.price.substr(1))
+        return acc += price;
+    }, 0)
+    return{
+        total: total.toFixed(0),
+        productCount: products.length
+    }
+}
+
+findCartInfo();
+
+function updateCartInfo(){
+    let cartInfo = findCartInfo();
+    cartCountInfo.textContent = cartInfo.productCount;
+    cartTotalValue.textContent = '$' + cartInfo.total;
+}
+
+
+//eliminar del carrito
+
+cartList.addEventListener('click', deleteProduct);
+
+function deleteProduct(e){
+    let cartItem;
+    if(e.target.tagName === "BUTTON"){
+        cartItem = e.target.parentElement;
+        cartItem.remove(); //sólo lo elimina del DOM
+    } else if(e.target.tagName === "I"){
+        cartItem = e.target.parentElement.parentElement;
+        cartItem.remove(); //sólo lo elimina del DOM
+    }
+    
+    let products = getProductFromStorage();
+    let updatedProducts = products.filter(product => {
+        return product.id !== parseInt(cartItem.dataset.id);
+    });
+
+    localStorage.setItem('products', JSON.stringify(updatedProducts));
+    updateCartInfo();
+}
+
+//cambiar cantidad del item
+
+// function quantityChanged(e){
+//     const input = e.target;
+//     input.value <= 0 ? (input.value = 1) : null;
+
+// }
