@@ -16,14 +16,13 @@
     <div class="container">
       <a class="navbar-brand d-flex" href="./index.html">
         <img src="https://res.cloudinary.com/digb4d0uf/image/upload/c_scale,h_70,w_70/v1651882475/JS%20CoderHouse/pizza-logo_n2z8o5.webp" alt="" width="70" height="70" class="d-inline-block align-text-top mt-2 logoImg">
-        <p class="textoLogo h2 fw-light">Hernán Díaz Orrac</p>
       </a>
     </div>
   </nav>
 </header>
 
 <main class="container">
-  <div class="cardsContainer row col-7 col-sm-6 col-md-10 col-lg-12"></div>
+  <div class="cardsContainer addToCart row col-7 col-sm-6 col-md-10 col-lg-12"></div>
   <div class="randomPizzaButton mt-4 mb-4">
     <p class="d-flex justify-content-center display-6">Si no te decidís, usá nuestro generador de pizzas.</p>
     <button type="button" class="btn btn-warning d-block mx-auto" onclick="modalPizza()">¡Clickeame!</button>
@@ -31,16 +30,32 @@
 
   <section class="shoppingCart">
     <div class="container">
-        <h1 class="text-center pedido">Vas a llevar:</h1>      
+        <h1 class="text-center pedido text-muted">Vas a llevar:</h1>      
         <div class="cartItemsContainer">
         </div>
   
   <div class="row">
     <div class="col-12">
-        <div class="shoppingCartTotal d-flex align-items-center">
-            <p class="mb-0">Total:</p>
-            <p class="ms-3 mb-0 cartTotal">$0</p>
-            <div class="toast ml-auto bg-info" role="alert" aria-live="assertive" aria-atomic="true"
+        <div class="shoppingCartTotal d-flex">
+            <p class="mb-0 text-muted">Total:</p>
+            <p class="cartTotal ms-3 mb-0 text-muted">$0</p>
+
+            <div aria-live="polite" aria-atomic="true" class="bg-dark position-relative bd-example-toasts">
+              <div class="toast-container p-3" id="toastPlacement">
+                <div class="toast">
+                  <div class="toast-header">
+                    <img src="" class="rounded me-2" alt="...">
+                    <strong class="me-auto">Bootstrap</strong>
+                    <small>11 mins ago</small>
+                  </div>
+                  <div class="toast-body">
+                    Hello, world! This is a toast message.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="toast ml-auto bg-info" role="alert" aria-live="assertive" aria-atomic="true"
                 data-delay="2000">
                 <div class="toast-header">
                     <span>✅</span>
@@ -52,10 +67,12 @@
                 <div class="toast-body text-white">
                     Se aumentó correctamente la cantidad
                 </div>
-            </div>
-            <div class="pt-4 ms-auto">
-            <button class="btn btn-success comprarButton" type="button" data-toggle="modal"
-                data-target="#comprarModal">Realizar pedido</button></div>
+            </div> -->
+            
+        </div>
+        <div class="row">
+        <button class="comprarButton btn btn-success mx-auto mb-4" type="button" data-toggle="modal"
+                data-target="#comprarModal">Realizar pedido</button>
         </div>
     </div>
   </div>

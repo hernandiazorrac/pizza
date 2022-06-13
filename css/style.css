@@ -68,7 +68,7 @@
   }
 
 .shopping-cart-quantity-input {
-    max-width: 45px;
+    max-width: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background: #eee;
@@ -77,7 +77,9 @@
 
   .shoppingCartTotal{
       font-size: 25px;
-      min-height: 96px;
+      margin-bottom: 15px;
+      padding: 50px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.144);
   }
 
   .shoppingCart{
@@ -85,8 +87,13 @@
   }
 
   .pedido{
-      font-weight: 50;
+    font-size: 25px;
+    font-weight: 50;
+    padding-top: 50px;
+    border-top: 1px solid rgba(0, 0, 0, 0.144);
   }
+
+
 
 /* .cardsContainer{
     display: flex;
