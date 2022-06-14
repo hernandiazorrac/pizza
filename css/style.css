@@ -23,13 +23,6 @@
     transform: rotate(30deg);
 }
 
-.countDisplayContainer{
-    display: inline-block;
-    padding: 2% 5%;    
-    color: rgba(0, 0, 0, 0.384);
-    border-radius: 5px;
-    background-color:rgba(211, 211, 211, 0.253);
-}
 
 #imgPizza, #imgPizza2{
     height: 400px;
@@ -67,13 +60,6 @@
     border-bottom: 1px solid #ccc;
   }
 
-.shopping-cart-quantity-input {
-    max-width: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #eee;
-    padding: 5px;
-  }
 
   .shoppingCartTotal{
       font-size: 25px;
@@ -86,14 +72,25 @@
       padding-top: 50px;
   }
 
+  .shopping-cart-item, .cartPrice, .cartQuantity{
+    margin-top: -60px;
+  }
+
   .pedido{
     font-size: 25px;
     font-weight: 50;
-    padding-top: 50px;
+    padding: 50px 0;
     border-top: 1px solid rgba(0, 0, 0, 0.144);
   }
 
 
+  input { 
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.144);
+    background-color: #fff;
+    padding-left: 12px;
+    text-align: center; 
+}
 
 /* .cardsContainer{
     display: flex;

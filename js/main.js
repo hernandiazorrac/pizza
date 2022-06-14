@@ -123,70 +123,82 @@ function loadJSON(){
 
 // ------------------------------------------------------------ //
 
+let cartContent = document.querySelector('.cartItemsContainer');
+let cart = [];
 const comprarButton = document.querySelector('.comprarButton');
 comprarButton.addEventListener('click', comprarButtonClicked);
-
 const addToCartButton = document.querySelectorAll('.addToCart');
+const cartItemsContainer = document.querySelector('.cartItemsContainer')
 
-addToCartButton.forEach((addToCartButton) => {
+
+addToCartButton.forEach(addToCartButton => {
     addToCartButton.addEventListener('click', addToCartClicked)
 });
 
-const cartItemsContainer = document.querySelector('.cartItemsContainer')
-
-// function addToCart(e){
-//     const button =e.target;
-//     const item = button.closest('.addToCart')
-// }
-
-// const cartItemsContainer = document.querySelector('.cartItemsContainer')
 
 function addToCartClicked(e){
     const button = e.target;
     
-    const item = button.closest('.productItem');
+    const item = button.closest('.card');
     
     const itemTitle = item.querySelector('.productName').textContent;
     const itemPrice = item.querySelector('.productPrice').textContent;
     const itemImg = item.querySelector('.imgClass').src;
 
-    addItemToCart(itemTitle, itemPrice, itemImg);
+    
+
+    const newItem = {
+        title: itemTitle,
+        price: itemPrice,
+        img: itemImg,
+        quantity: 1
+    }
+
+    addToCart(newItem);
 }
 
-
-function addItemToCart(itemTitle, itemPrice, itemImg){
-
-    const elementsTitle = cartItemsContainer.getElementsByClassName('cartItemTitle')
+function addToCart(newItem){
     
-    for(let i = 0; i < elementsTitle.length; i += 1){
-        if (elementsTitle[i].innerText === itemTitle){
-            let elementQuantity = elementsTitle[i].parentElement.parentElement.parentElement.querySelector('.cartItemQuantity')
-            elementQuantity.value++;
+    const inputElement = document.getElementsByClassName('cartItemQuantity')
+    
+    for(let i = 0; i < cart.length; i++){
+        if(cart[i].title.trim() === newItem.title.trim()){
+            cart[i].quantity++;
+            const inputValue = inputElement[i]
+            inputValue.value++;
             updateCartTotal();
             return;
         }
     }
+    cart.push(newItem)
+    showCart();
+}
 
+function showCart(){
+
+    cartItemsContainer.innerHTML = ''
+    
+    cart.map(item => {
     const cartRow = document.createElement('div');
+    cartRow.classList.add('itemCart')
+
     const cartContent = `
         <div class="row shoppingCartItem">
             <div class="col-6">
                 <div class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
-                    <img src='${itemImg}' class="cartImg img-fluid h-50">
-                    <h6 class="cartItemTitle text-truncate ms-3">${itemTitle}
+                    <img src='${item.img}' class="cartImg img-fluid h-50">
+                    <h6 class="cartItemTitle text-truncate ms-3">${item.title}
                     </h6>
                 </div>
             </div>
             <div class="col-2">
                 <div class="cartPrice d-flex align-items-center h-100 border-bottom pb-2 pt-3">
-                    <p class="mb-0 cartItemPrice">${itemPrice}</p>
+                    <p class="mb-0 cartItemPrice">${item.price}</p>
                 </div>
             </div>
             <div class="col-4">
-                <div
-                    class="cartQuantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
-                    <input class="cartItemQuantity col-2" type="number"
-                        value="1" min="1">
+                <div class="cartQuantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
+                    <input class="cartItemQuantity col-2" id="num" type="number" value="${item.quantity}" min="1">
                     <button class="btn btn-danger buttonDelete" type="button">X</button>
                 </div>
             </div>
@@ -196,14 +208,13 @@ function addItemToCart(itemTitle, itemPrice, itemImg){
         cartItemsContainer.append(cartRow)
 
         cartRow.querySelector('.buttonDelete').addEventListener('click', removeCartItem)
-
         cartRow.querySelector('.cartItemQuantity').addEventListener('change', quantityChanged)
-
+    })
         updateCartTotal();
 }
 
-
 function updateCartTotal(){
+
     let total = 0;
     const cartTotal = document.querySelector('.shoppingCartTotal')
 
@@ -220,16 +231,38 @@ function updateCartTotal(){
     })
 
     cartTotal.innerHTML = `Total: $${total}`
+    addToLocalStorage()
+
 }
+
 
 function removeCartItem(e){
     const buttonClicked = e.target;
+    const itemCart = buttonClicked.closest('.itemCart')
+    const title = itemCart.querySelector('.cartItemTitle').textContent
+
+    for(let i = 0; i < cart.length; i += 1){
+        if(cart[i].title.trim() === title.trim()){
+            cart.splice(i,1)
+        }
+    }
+
     buttonClicked.closest('.shoppingCartItem').remove()
     updateCartTotal();
 }
 
-function quantityChanged(){
-    updateCartTotal();
+function quantityChanged(e){
+    const inputQuantity = e.target;
+    const itemCart = inputQuantity.closest('.itemCart')
+    const title = itemCart.querySelector('.cartItemTitle').innerText;
+
+    cart.forEach(item => {
+        if(item.title === title){
+            inputQuantity.value < 1 ? (inputQuantity.value = 1) : inputQuantity.value;
+            item.quantity = inputQuantity.value;
+            updateCartTotal();
+        }
+    })
 }
 
 function comprarButtonClicked(){
@@ -272,80 +305,14 @@ function comprarButtonClicked(){
     updateCartTotal()
 }
 
-// function comprarButtonClicked() {
-//     cartItemsContainer.innerHTML = '';
-//     updateCartTotal();
-//   }
+function addToLocalStorage(){
+    localStorage.setItem('cart', JSON.stringify(cart))
+}
 
-//     const elementsTitle = cartItemsContainer.getElementsByClassName('cartItemTitle');
-
-//     for (let i = 0; i < elementsTitle.length; i += 1){
-//         if(elementsTitle[i].innerText === itemTitle){
-//             let elementQuantity = elementsTitle[i].parentElement.parentElement.parentElement.querySelector('.cartItemQuantity');
-//             elementQuantity.value++;
-//             updateTotal();
-//             return;
-//         }
-//     }
-
-//     const cartRow = document.createElement('div');
-//     const cartContent = `
-//     <div class="row cartItem">
-//     <div class="col-6 col-sm-6 ms-auto">
-//         <div class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
-//             <img src=${itemImg} height="75" class="m-2 shopping-cart-image">
-//             <h6 class="shopping-cart-item-title cartItemTitle text-truncate ml-3 mb-0">${itemTitle}</h6>
-//         </div>
-//     </div>
-//     <div class="col-2 col-sm-1">
-//         <div class="shopping-cart-price d-flex align-items-center h-100 border-bottom pb-2 pt-3">
-//             <p class="item-price mb-0 cartItemPrice">${itemPrice}</p>
-//         </div>
-//     </div>
-//     <div class="container row col-4 ">
-//         <div
-//             class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
-//             <input class="shopping-cart-quantity-input cartItemQuantity" type="number" value="1" min="1">
-//             <button class="btn btn-danger ms-1 buttonDelete" onclick="removeAllFromCart('${pizzasVariedad[0].nombre}', '${pizzasVariedad[0].precio}', '${pizzasVariedad[0].cantidad}')" type="button">X</button>
-//         </div>
-//     </div>
-// </div>`;
-
-//     cartRow.innerHTML = cartContent;
-//     cartItemsContainer.append(cartRow)
-
-//     cartRow.querySelector('.buttonDelete').addEventListener('click', removeFromCart)
-
-//     cartRow.querySelector('.cartItemQuantity').addEventListener('change', quantityChanged)
-
-//     updateTotal();
-// }
-
-// function updateTotal(){
-//     let total = 0;
-//     const cartTotal = document.querySelector('.cartTotal')
-//     const cartItems = document.querySelectorAll('.cartItem')
-
-//     cartItems.forEach(cartItem => {
-//         const cartItemPriceElement = cartItem.querySelector('.cartItemPrice');
-//         const cartItemPrice = Number(cartItemPriceElement.textContent.replace('$', ''));
-//         const cartItemQuantityElement = cartItem.querySelector('.cartItemQuantity');
-//         const cartItemQuantity = Number(cartItemQuantityElement.value)
-        
-//         total = total + cartItemPrice * cartItemQuantity;
-//     })
-//     cartTotal.innerHTML = `$${total}`;
-// }
-
-// function removeFromCart(evt){
-//     const buttonClicked = evt.target;
-//     buttonClicked.closest('.cartItem').remove();
-//     removeAllFromCart();
-//     updateTotal();
-// }
-
-// function quantityChanged(evt){
-//     const input = evt.target;
-//     input.value <= 0 ? (input.value = 1) : null;
-//     updateTotal();
-// }
+window.onload = function(){
+    const storage = JSON.parse(localStorage.getItem('cart'));
+    if(storage){
+        cart = storage;
+        showCart();
+    }
+}
