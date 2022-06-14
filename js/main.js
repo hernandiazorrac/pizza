@@ -114,7 +114,9 @@ function loadJSON(){
     </div>
   </div>
 </div>
-</div> `
+</div> 
+
+`
         });
         productList.innerHTML = html;
     })
@@ -126,9 +128,19 @@ function loadJSON(){
 let cartContent = document.querySelector('.cartItemsContainer');
 let cart = [];
 const comprarButton = document.querySelector('.comprarButton');
-comprarButton.addEventListener('click', comprarButtonClicked);
+// comprarButton.addEventListener('click', comprarButtonClicked);
 const addToCartButton = document.querySelectorAll('.addToCart');
 const cartItemsContainer = document.querySelector('.cartItemsContainer')
+
+document.getElementById("purchaseButton").onclick = function () {
+    location.href = "./pages/payment.html";
+    cartItemsContainer.innerHTML = ''
+    const storage = JSON.parse(localStorage.getItem('cart'));
+    if(storage){
+        cart = [];
+        showCart();
+    }
+};
 
 
 addToCartButton.forEach(addToCartButton => {
@@ -172,6 +184,7 @@ function addToCart(newItem){
     }
     cart.push(newItem)
     showCart();
+    
 }
 
 function showCart(){
@@ -232,7 +245,6 @@ function updateCartTotal(){
 
     cartTotal.innerHTML = `Total: $${total}`
     addToLocalStorage()
-
 }
 
 
@@ -265,45 +277,7 @@ function quantityChanged(e){
     })
 }
 
-function comprarButtonClicked(){
 
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: 'btn btn-success',
-          cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-      })
-      
-      swalWithBootstrapButtons.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-        reverseButtons: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-          swalWithBootstrapButtons.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
-        } else if (
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          swalWithBootstrapButtons.fire(
-            'Cancelled',
-            'Your imaginary file is safe :)',
-            'error'
-          )
-        }
-      })
-
-    cartItemsContainer.innerHTML = '';
-    updateCartTotal()
-}
 
 function addToLocalStorage(){
     localStorage.setItem('cart', JSON.stringify(cart))
